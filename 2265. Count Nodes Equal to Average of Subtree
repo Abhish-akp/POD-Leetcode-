@@ -1,0 +1,21 @@
+class Solution {
+public: 
+    int avg=0;   
+    int averageOfSubtree(TreeNode* root) {
+        avg_tree(root);
+        return avg;
+    }
+    private:
+    pair<int,int> avg_tree(TreeNode *root){
+       if(root==NULL)
+          return {0,0};
+        auto _left=avg_tree(root->left);
+        auto _right=avg_tree(root->right);
+        
+        int sum=_left.first+_right.first+root->val;
+        int count=_left.second+_right.second+1;
+        if(sum/count==root->val)
+            avg++;
+        return {sum,count};
+    }
+};
