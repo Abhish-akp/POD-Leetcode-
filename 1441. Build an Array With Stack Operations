@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<string> buildArray(vector<int>& target, int n) {
+        unordered_set<int> target_set(target.begin(), target.end());
+        vector<string>s;
+
+        for(int i=1;i<=target.back();++i){
+            if(target_set.find(i)!=target_set.end()){
+               s.push_back("Push");
+           }
+           else{
+               s.push_back("Push");
+               s.push_back("Pop");
+               }   
+        }
+        return s;
+        
+    }
+};
