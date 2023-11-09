@@ -1,0 +1,24 @@
+#define mod 1000000007
+class Solution {
+public:
+    int countHomogenous(string s) {
+        long long int res=0;
+        int start=0;
+        for(int i=0;i<s.length();i++){
+            if(s[i]!=s[start]){
+                int x=i-start;
+                while(x>0){
+                    res+=x;
+                    x--;
+                }
+                start=i;
+            }
+        }
+        int x=s.length()-start;
+        while(x>0){
+            res+=x;
+            x--;
+        }
+        return static_cast<int>(res%(mod));
+    }
+};
