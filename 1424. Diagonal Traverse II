@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> findDiagonalOrder(vector<vector<int>>& nums) {
+        int m=nums.size(),mx=0,size=0,idx=0;
+        vector<vector<int>>vec(100001);
+        for(int i=0;i<m;i++){
+            size+=nums[i].size();
+            for(int j=0;j<nums[i].size();j++){
+                int sum=i+j;
+                vec[sum].push_back(nums[i][j]);
+                mx=max(mx,sum);
+            }
+        }
+        vector<int>result(size);
+        for(int i=0;i<=mx;i++){
+            vector<int>&curr=vec[i];
+            for(int j=curr.size()-1;j>=0;j--){
+                result[idx++]=curr[j];
+            }
+        }
+        return result;
+    }
+};
