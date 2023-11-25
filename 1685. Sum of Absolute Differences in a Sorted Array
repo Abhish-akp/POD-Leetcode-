@@ -1,0 +1,36 @@
+// Approach 1(brute force)
+
+class Solution {
+public:
+    vector<int> getSumAbsoluteDifferences(vector<int>& nums) {
+        vector<int>vec;
+        for(int i=0;i<nums.size();i++){
+            int sum=0;
+            for(int j=0;j<nums.size();j++){
+                if(i!=j)
+                    sum+=abs(nums[i]-nums[j]);
+            }
+            vec.push_back(sum);
+        }
+        return vec;
+    }
+};
+
+
+//Approach 2(optmized)
+
+class Solution {
+public:
+    vector<int> getSumAbsoluteDifferences(vector<int>& nums) {
+        int sum=accumulate(nums.begin(),nums.end(),0);
+        int lf=0,rt=sum;
+        vector<int>vec(nums.size(),0);
+        for(int i=0;i<nums.size();i++){
+            int x=nums[i];
+            rt-=x;
+            vec[i]=x*i-lf+rt-x*(nums.size()-i-1);
+            lf+=x;
+        }
+        return vec;
+    }
+};
