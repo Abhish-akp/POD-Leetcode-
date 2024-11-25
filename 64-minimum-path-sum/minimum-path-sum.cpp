@@ -15,12 +15,6 @@ public:
                 dp[i][j]=grid[i][j]+min(dp[i-1][j],dp[i][j-1]);
             }
         }
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                cout<<dp[i][j]<<" ";
-            }
-            cout<<endl;
-        }
         return dp[m-1][n-1];
     }
 };
